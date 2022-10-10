@@ -48,6 +48,7 @@ public class UserController {
     }
 
     @PutMapping("update-role/{userName}/{role}")
+    @PreAuthorize("hasAnyRole('ROLE_EXECUTIVE','ROLE_ADMIN')")
     public ResponseEntity<ApiResponse> updateUserRole(@PathVariable("userName") String userName,
                                                       @PathVariable("role") String role,
                                                       Authentication currentUser){
